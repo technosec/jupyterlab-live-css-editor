@@ -28,7 +28,9 @@
         "url": "https://github.com/technosec/jupyterlab-live-css-editor.git"
     },
     "scripts": {
-        "build": "jlpm build:lib && jlpm build:labextension:dev",
+        "build:tailwind": "tailwindcss -i ./style/base.css -o ./style/tailwindOutput.css --minify",
+        "watch:tailwind": "tailwindcss -i ./style/base.css -o ./style/tailwindOutput.css --watch --minify",
+        "build": "jlpm build:lib && jlpm build:labextension:dev && jlpm build:tailwind",
         "build:prod": "jlpm clean && jlpm build:lib:prod && jlpm build:labextension",
         "build:labextension": "jupyter labextension build .",
         "build:labextension:dev": "jupyter labextension build --development True .",
@@ -49,12 +51,18 @@
         "prettier:check": "jlpm prettier:base --check",
         "stylelint": "jlpm stylelint:check --fix",
         "stylelint:check": "stylelint --cache \"style/**/*.css\"",
-        "watch": "run-p watch:src watch:labextension",
+        "watch": "run-p watch:src watch:labextension watch:tailwind",
         "watch:src": "tsc -w --sourceMap",
         "watch:labextension": "jupyter labextension watch ."
     },
     "dependencies": {
-        "@jupyterlab/application": "^4.0.0"
+        "@codemirror/lang-css": "^6.2.1",
+        "@jupyterlab/application": "^4.0.0",
+        "@jupyterlab/apputils": "^4.0.0",
+        "@jupyterlab/ui-components": "^4.0.0",
+        "@uiw/codemirror-extensions-color": "^4.21.21",
+        "@uiw/react-codemirror": "^4.21.21",
+        "react-copy-to-clipboard": "^5.1.0"
     },
     "devDependencies": {
         "@jupyterlab/builder": "^4.0.0",
@@ -77,6 +85,7 @@
         "stylelint-config-standard": "^34.0.0",
         "stylelint-csstree-validator": "^3.0.0",
         "stylelint-prettier": "^4.0.0",
+        "tailwindcss": "^3.3.7",
         "typescript": "~5.0.2",
         "yjs": "^13.5.0"
     },
@@ -102,8 +111,7 @@
         "extends": [
             "eslint:recommended",
             "plugin:@typescript-eslint/eslint-recommended",
-            "plugin:@typescript-eslint/recommended",
-            "plugin:prettier/recommended"
+            "plugin:@typescript-eslint/recommended"
         ],
         "parser": "@typescript-eslint/parser",
         "parserOptions": {
@@ -136,20 +144,14 @@
             "@typescript-eslint/no-explicit-any": "off",
             "@typescript-eslint/no-namespace": "off",
             "@typescript-eslint/no-use-before-define": "off",
-            "@typescript-eslint/quotes": [
-                "error",
-                "single",
-                {
-                    "avoidEscape": true,
-                    "allowTemplateLiterals": false
-                }
-            ],
             "curly": [
                 "error",
                 "all"
             ],
             "eqeqeq": "error",
-            "prefer-arrow-callback": "error"
+            "prefer-arrow-callback": "error",
+			"no-mixed-spaces-and-tabs": "off",
+			"@typescript-eslint/ban-types": "off"
         }
     },
     "prettier": {
@@ -157,6 +159,7 @@
         "trailingComma": "none",
         "arrowParens": "avoid",
         "endOfLine": "auto",
+        "useTabs": true,
         "overrides": [
             {
                 "files": "package.json",

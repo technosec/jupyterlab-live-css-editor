@@ -1,5 +1,136 @@
-/*
-    See the JupyterLab Developer Guide for useful CSS Patterns:
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-    https://jupyterlab.readthedocs.io/en/stable/developer/css.html
-*/
+/* sample color palette */
+
+:root {
+	--yourColor-primary-dark: #4A90E2;
+	--yourColor-primary-main: #32CD32;
+	--yourColor-primary-light: #FF4500;
+	--yourColor-primary-container: #8A2BE2;
+	--yourColor-secondary-dark: #FF6347;
+	--yourColor-secondary-main: #40E0D0;
+	--yourColor-secondary-light: #FFD700;
+	--yourColor-secondary-container: red;
+}
+
+/* plugin: live CSS editor */
+
+:root {
+    --twindcolors-slate-50: #f8fafc;
+    --twindcolors-slate-100: #f1f5f9;
+    --twindcolors-slate-200: #e2e8f0;
+    --twindcolors-slate-300: #cbd5e1;
+    --twindcolors-slate-400: #94a3b8;
+    --twindcolors-slate-500: #64748b;
+    --twindcolors-slate-600: #475569;
+    --twindcolors-slate-700: #334155;
+    --twindcolors-slate-800: #1e293b;
+    --twindcolors-slate-900: #0f172a;
+    --twindcolors-slate-950: #020617;
+}
+
+.live-css-editor-plugin-wrapper {
+    min-width: 280px !important;
+    background: var(--twindcolors-slate-950);
+
+    & div[aria-label="notebook actions"] {
+		display: block !important;
+		background: var(--twindcolors-slate-950) !important;
+		height: 50px !important;
+		z-index: -1 !important;
+    }
+
+    & .live-css-editor-controllers {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        padding-bottom: 10px;
+
+        & .color-view-code-view-switcher {
+            margin-left: 10px;
+            display: flex;
+            gap: 20px;
+            & button {
+                color: var(--twindcolors-slate-100);
+                width: 40px;
+            }
+
+            & .css-editor-active-view {
+                font-weight: bolder;
+            }
+        }
+    }
+    
+    & .cm-content {
+        cursor: text;
+    }
+
+    & .cm-scroller{
+        padding: 10px 0;
+    }
+
+    & .live-css-editor-plugin {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+		background-color: var(--twindcolors-slate-950);
+        
+        & .live-css-cm-wrapper {
+            height: 100% !important;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+
+            & .code-mirror-class-name {
+                height: 100% !important;
+            }
+            
+            & .cm-editor {
+                height: 100% !important;
+            }
+
+            & .live-css-welcome-page {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                padding-bottom: 200px;
+                gap: 20px;
+            
+                & * {
+                    color: var(--twindcolors-slate-400);
+                    user-select: none;
+                    
+                }
+            
+                & .undraw-svg-wrapper svg{
+                    width: 105px;
+                    height: 99px;
+                }
+            }
+
+            & .tailwind-colors-link-text {
+                text-decoration: underline;
+            }
+            
+        }
+
+        & .live-css-cm-wrapper:has(.color-palette-colors) {
+            &::-webkit-scrollbar {
+                width: 4px !important;
+            }
+        
+            &::-webkit-scrollbar-thumb {
+              border-radius: 50px;
+              background: var(--twindcolors-slate-500);
+            }
+        }
+    }
+}
+
