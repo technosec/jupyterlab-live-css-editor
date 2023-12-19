@@ -1,0 +1,20 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v4.2.4
+_src_path: https://github.com/jupyterlab/extension-template
+author_email: toghrul.mukhtarov@technosec.dev
+author_name: Technosec
+data_format: string
+file_extension: ''
+has_binder: false
+has_settings: false
+kind: frontend
+labextension_name: '@technosec/jupyter-live-css-editor'
+mimetype: ''
+mimetype_name: ''
+project_short_description: A JupyterLab extension to style your extensions/applications
+    easily & fast.
+python_name: technosec_jupyter_live_css_editor
+repository: https://github.com/technosec/jupyterlab-live-css-editor
+test: false
+viewer_name: ''
+
