@@ -2,6 +2,8 @@
 
 A JupyterLab extension to style your extensions/applications easily & fast.
 
+![live-css-editor](liveCSSEditor.gif)
+
 ## Install
 
 ```bash
