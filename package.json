@@ -28,7 +28,7 @@
         "url": "https://github.com/technosec/jupyterlab-live-css-editor.git"
     },
     "scripts": {
-		"createTwOutputFile": "touch ./style/tailwindOutput.css",
+        "createTwOutputFile": "touch ./style/tailwindOutput.css",
         "build:tailwind": "tailwindcss -i ./style/base.css -o ./style/tailwindOutput.css --minify",
         "watch:tailwind": "tailwindcss -i ./style/base.css -o ./style/tailwindOutput.css --watch --minify",
         "build": "jlpm createTwOutputFile && jlpm build:lib && jlpm build:labextension:dev && jlpm build:tailwind",
@@ -151,8 +151,8 @@
             ],
             "eqeqeq": "error",
             "prefer-arrow-callback": "error",
-			"no-mixed-spaces-and-tabs": "off",
-			"@typescript-eslint/ban-types": "off"
+            "no-mixed-spaces-and-tabs": "off",
+            "@typescript-eslint/ban-types": "off"
         }
     },
     "prettier": {
