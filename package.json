@@ -28,9 +28,10 @@
         "url": "https://github.com/technosec/jupyterlab-live-css-editor.git"
     },
     "scripts": {
+		"createTwOutputFile": "touch ./style/tailwindOutput.css",
         "build:tailwind": "tailwindcss -i ./style/base.css -o ./style/tailwindOutput.css --minify",
         "watch:tailwind": "tailwindcss -i ./style/base.css -o ./style/tailwindOutput.css --watch --minify",
-        "build": "jlpm build:lib && jlpm build:labextension:dev && jlpm build:tailwind",
+        "build": "jlpm createTwOutputFile && jlpm build:lib && jlpm build:labextension:dev && jlpm build:tailwind",
         "build:prod": "jlpm clean && jlpm build:lib:prod && jlpm build:labextension",
         "build:labextension": "jupyter labextension build .",
         "build:labextension:dev": "jupyter labextension build --development True .",
@@ -51,7 +52,7 @@
         "prettier:check": "jlpm prettier:base --check",
         "stylelint": "jlpm stylelint:check --fix",
         "stylelint:check": "stylelint --cache \"style/**/*.css\"",
-        "watch": "run-p watch:src watch:labextension watch:tailwind",
+        "watch": "jlpm createTwOutputFile && run-p watch:src watch:labextension watch:tailwind",
         "watch:src": "tsc -w --sourceMap",
         "watch:labextension": "jupyter labextension watch ."
     },
