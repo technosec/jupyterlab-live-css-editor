@@ -31,18 +31,32 @@
     --twindcolors-slate-950: #020617;
 }
 
+li.lm-TabBar-tab:has(.liveCSSEditorIcon) {
+	gap: 5px;
+
+	& .liveCSSEditorIcon {
+		rotate: 270deg;
+		color: orange;
+	}
+	& .lm-TabBar-tabLabel {
+		order: -1;
+	}
+}
+
 .live-css-editor-plugin-wrapper {
     min-width: 280px !important;
     background: var(--twindcolors-slate-950);
 
     & div[aria-label="notebook actions"] {
-		display: block !important;
-		background: var(--twindcolors-slate-950) !important;
-		height: 50px !important;
-		z-index: -1 !important;
+        display: none !important;
+    }
+    & .lm-Widget.jp-Toolbar.jp-Toolbar-micro {
+        background: var(--twindcolors-slate-950);
+        border: var(--twindcolors-slate-950);
     }
 
     & .live-css-editor-controllers {
+        background: var(--twindcolors-slate-950);
         height: 40px;
         display: flex;
         align-items: center;
@@ -63,22 +77,14 @@
             }
         }
     }
-    
-    & .cm-content {
-        cursor: text;
-    }
-
-    & .cm-scroller{
-        padding: 10px 0;
-    }
 
     & .live-css-editor-plugin {
         height: 100%;
         display: flex;
         flex-direction: column;
-		background-color: var(--twindcolors-slate-950);
         
         & .live-css-cm-wrapper {
+            background: var(--twindcolors-slate-950);
             height: 100% !important;
             overflow-y: scroll;
 
@@ -86,15 +92,8 @@
                 width: 0;
             }
 
-            & .code-mirror-class-name {
-                height: 100% !important;
-            }
-            
-            & .cm-editor {
-                height: 100% !important;
-            }
-
             & .live-css-welcome-page {
+                background: var(--twindcolors-slate-950);
                 display: flex;
                 flex-direction: column;
                 height: 100%;
@@ -121,9 +120,31 @@
             
         }
 
+        & .live-css-cm-wrapper:has(.monaco-editor) {
+            display: flex;
+	        flex-direction: column;
+
+            & .our-monaco-wrapper {
+                flex: 1;
+                padding-left: 10px;
+                background: #1e1e1e !important;
+                
+                & section {
+                    height: 100% !important;
+                }
+            }
+
+            
+        }
+
+        & .css-editor-color-palette-wrapper {
+            background: var(--twindcolors-slate-950); 
+        }
+
         & .live-css-cm-wrapper:has(.color-palette-colors) {
             &::-webkit-scrollbar {
                 width: 4px !important;
+                background: var(--twindcolors-slate-950);
             }
         
             &::-webkit-scrollbar-thumb {
@@ -134,3 +155,175 @@
     }
 }
 
+.live-css-cm-wrapper .cssedit-sheets-page-wrapper {
+	color: var(--twindcolors-slate-300);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	& .cssedit-sheets-header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		& h1 {
+			text-align: center;
+			font-size: 24px;
+		}
+
+		& p {
+			font-size: 16px;
+			color: var(--twindcolors-slate-500);
+			text-align: center;
+		}
+
+		& .cssedit-active-styles-counter-div {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+
+			& p {
+				color: var(--twindcolors-slate-300);
+			}
+		}
+	}
+
+	& .cssedit-sheets-wrapper {
+		width: 100%;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		& .cssedit-a-sheet {
+			border: 1px solid var(--twindcolors-slate-700);
+			color: var(--twindcolors-slate-700);
+			padding: 10px;
+			border-radius: 10px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			&:hover {
+				cursor: pointer;
+				background-color: var(--twindcolors-slate-900);
+			}
+
+			& button {
+				padding: 10px 20px;
+				border: 1px solid var(--twindcolors-slate-700);
+				border-radius: 10px;
+				width: 90px;
+
+				&:hover {
+					background-color: var(--twindcolors-slate-700);
+					color: var(--twindcolors-slate-500);
+				}
+			}
+		}
+
+		& .cssedit-a-sheet.cssedit-active-sheet {
+			border: 1px solid var(--twindcolors-slate-300);
+			color: var(--twindcolors-slate-300);
+
+			& button {
+				border: 1px solid var(--twindcolors-slate-300);
+
+				&:hover {
+					color: var(--twindcolors-slate-200);
+				}
+			}
+
+		}
+	}
+}
+
+.live-css-cm-wrapper .cssedit-file-header {
+	color: var(--twindcolors-slate-300);
+	background-color: var(--twindcolors-slate-800);
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 10px;
+	height: 38px;
+
+	& .cssedit-current-file-name {
+		padding-left: 5px;
+        color: var(--twindcolors-slate-500);
+	}
+
+    & .cssedit-current-file-name.cssedit-current-file-active {
+        color: var(--twindcolors-slate-300);
+    }
+
+	&>div {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+        padding-left: 4px;
+        padding-right: 12px;
+        border-radius: 10px;
+
+		&:hover {
+			color: var(--twindcolors-slate-100);
+			cursor: pointer;
+            background-color: rgba(15, 23, 42, 0.3); /* slate-900 with opacity */
+
+			& .cssedit-header-active-counter {
+				color: var(--twindcolors-slate-100);
+			}
+		}
+	}
+
+	& .cssedit-toggle-individual-file {
+		background-color: var(--twindcolors-slate-900);
+		color: var(--twindcolors-slate-400);
+		padding: 4px 20px;
+		border-radius: 5px;
+		width: 70px;
+	}
+
+	& .cssedit-toggle-individual-file.cssedit-current-sheet-is-active {
+		background-color: var(--twindcolors-slate-950);
+		color: var(--twindcolors-slate-50);
+	}
+}
+
+.live-css-cm-wrapper .cssedit-header-active-counter {
+	background-color: #65a30d;
+	color: var(--twindcolors-slate-300);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	width: 18px;
+	height: 18px;
+}
+
+.live-css-cm-wrapper  .cssedit-file-header .cssedit-header-active-counter {
+	width: 14px;
+	height: 14px;
+	font-size: 11px;
+	opacity: 0.75;
+}
+
+.live-css-cm-wrapper .cssedit-file-header .cssedit-current-file-name {
+	font-size: 15px;
+}
+
+.live-css-cm-wrapper .livecssedit-download-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+	padding: 12px;
+	
+	& .livecssedit-download-icon {
+		height: 20px;
+		width: 20px;
+	}
+
+	&:hover {
+		scale: 1.125;
+	}
+}

@@ -58,11 +58,16 @@
     },
     "dependencies": {
         "@codemirror/lang-css": "^6.2.1",
+        "@heroicons/react": "^2.1.3",
         "@jupyterlab/application": "^4.0.0",
         "@jupyterlab/apputils": "^4.0.0",
         "@jupyterlab/ui-components": "^4.0.0",
+        "@monaco-editor/react": "^4.6.0",
         "@uiw/codemirror-extensions-color": "^4.21.21",
         "@uiw/react-codemirror": "^4.21.21",
+        "file-saver": "^2.0.5",
+        "jszip": "^3.10.1",
+        "monaco-editor": "^0.47.0",
         "react-copy-to-clipboard": "^5.1.0"
     },
     "devDependencies": {

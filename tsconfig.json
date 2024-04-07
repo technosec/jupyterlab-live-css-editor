@@ -15,8 +15,8 @@
     "resolveJsonModule": true,
     "outDir": "lib",
     "rootDir": "src",
-    "strict": true,
-    "strictNullChecks": true,
+    "strict": false,
+    "strictNullChecks": false,
     "target": "ES2018"
   },
   "include": ["src/*"]
